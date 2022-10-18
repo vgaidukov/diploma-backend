@@ -1,0 +1,19 @@
+{
+  "name": "diploma-backend",
+  "version": "1.0.0",
+  "scripts": {
+    "lint": "npx eslint ./",
+    "start": "node --inspect app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vgaidukov/diploma-backend.git"
+  },
+  "author": "Vadim Gaidukov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vgaidukov/diploma-backend/issues"
+  },
+  "homepage": "https://github.com/vgaidukov/diploma-backend#readme"
+}
