@@ -3,7 +3,7 @@ class NotFoundError extends Error {
     super(message);
     this.name = 'CastError';
     this.statusCode = 404;
-    this.message = 'Карточка или пользователь не найден или был запрошен несуществующий роут';
+    this.message = 'Фильм или пользователь не найден, или был запрошен несуществующий роут';
   }
 }
 
