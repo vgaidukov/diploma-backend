@@ -4,55 +4,42 @@ Joi.objectId = require('joi-objectid')(Joi);
 
 const { urlPattern } = require('../utils/constants');
 
-// const {
-// getCards,
-//   createCard,
-//   deleteCard,
-//   likeCard,
-//   dislikeCard,
-// } = require('../controllers/movies');
+const {
+  getMovies,
+  createMovie,
+  deleteMovie,
+} = require('../controllers/movies');
 
-// router.get('/', getCards);
+router.get('/', getMovies);
 
-// router.post(
-//   '/',
-//   celebrate({
-//     body: Joi.object().keys({
-//       name: Joi.string().required().min(2).max(30),
-//       link: Joi.string().required().regex(urlPattern),
-//     }),
-//   }),
-//   createCard,
-// );
+router.post(
+  '/',
+  celebrate({
+    body: Joi.object().keys({
+      country: Joi.string().required(),
+      director: Joi.string().required(),
+      duration: Joi.number().required(),
+      year: Joi.string().required(),
+      description: Joi.string().required(),
+      image: Joi.string().required().regex(urlPattern),
+      trailerLink: Joi.string().required().regex(urlPattern),
+      thumbnail: Joi.string().required().regex(urlPattern),
+      movieId: Joi.number().required(),
+      nameRU: Joi.string().required(),
+      nameEN: Joi.string().required(),
+    }),
+  }),
+  createMovie,
+);
 
-// router.delete(
-//   '/:cardId',
-//   celebrate({
-//     params: Joi.object().keys({
-//       cardId: Joi.objectId().required(),
-//     }),
-//   }),
-//   deleteCard,
-// );
-
-// router.put(
-//   '/:cardId/likes',
-//   celebrate({
-//     params: Joi.object().keys({
-//       cardId: Joi.objectId().required(),
-//     }),
-//   }),
-//   likeCard,
-// );
-
-// router.delete(
-//   '/:cardId/likes',
-//   celebrate({
-//     params: Joi.object().keys({
-//       cardId: Joi.objectId().required(),
-//     }),
-//   }),
-//   dislikeCard,
-// );
+router.delete(
+  '/:movieId',
+  celebrate({
+    params: Joi.object().keys({
+      movieId: Joi.number().required(),
+    }),
+  }),
+  deleteMovie,
+);
 
 module.exports = router;

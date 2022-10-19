@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
-
-const validator = require('validator');
+const User = require('./user');
+const { urlPattern } = require('../utils/constants');
 
 const movieSchema = new mongoose.Schema(
   {
@@ -61,7 +60,7 @@ const movieSchema = new mongoose.Schema(
       required: [true],
     },
     movieId: {
-      type: mongoose.ObjectId,
+      type: Number,
       required: [true],
     },
     nameRU: {
@@ -72,7 +71,6 @@ const movieSchema = new mongoose.Schema(
       type: String,
       required: [true],
     },
-
   },
   {
     toObject:
@@ -83,4 +81,4 @@ const movieSchema = new mongoose.Schema(
   },
 );
 
-module.exports = mongoose.model('user', movieSchema);
+module.exports = mongoose.model('movie', movieSchema);
