@@ -1,4 +1,3 @@
-require('dotenv').config();
 const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -8,13 +7,14 @@ const limiter = require('./middlewares/limiter');
 const corsHandler = require('./middlewares/corsHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { errorHandler } = require('./errors/errorHandler');
+const { DB_LINK } = require('./config');
 
 const routes = require('./routes/index');
 
 const { PORT = 3000 } = process.env;
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/bitfilmsdb');
+mongoose.connect(DB_LINK);
 
 app.disable('x-powered-by');
 app.use(limiter);
