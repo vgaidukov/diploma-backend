@@ -4,6 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 
+const limiter = require('./middlewares/limiter');
 const corsHandler = require('./middlewares/corsHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { errorHandler } = require('./errors/errorHandler');
@@ -16,6 +17,7 @@ const app = express();
 mongoose.connect('mongodb://localhost:27017/bitfilmsdb');
 
 app.disable('x-powered-by');
+app.use(limiter);
 app.use(bodyParser.json());
 app.use(corsHandler);
 
