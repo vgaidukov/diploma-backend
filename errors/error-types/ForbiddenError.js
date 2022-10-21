@@ -3,7 +3,7 @@ class ForbiddenError extends Error {
     super(message);
     this.name = 'ForbiddenError';
     this.statusCode = 403;
-    this.message = 'Ошибка, отказано в доступе';
+    this.message = 'Ошибка доступа, требуется авторизация';
   }
 }
 
