@@ -1,5 +1,5 @@
 # diploma-backend
-Ссылка https://api.movies-vg.nomoredomains.icu/
+Ссылка https://api.movies-vg.nomoredomains.icu  
 Репозиторий на GitHub https://github.com/vgaidukov/diploma-backend
 
 ## Директории
