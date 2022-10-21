@@ -1,9 +1,11 @@
+const { UNAUTHORIZED_ERR } = require('../errorTextMessages');
+
 class UnauthorizedError extends Error {
-  constructor(message) {
-    super(message);
+  constructor() {
+    super();
     this.name = 'UnauthorizedError';
     this.statusCode = 401;
-    this.message = 'Ошибка доступа. Неправильные почта или пароль';
+    this.message = UNAUTHORIZED_ERR;
   }
 }
 

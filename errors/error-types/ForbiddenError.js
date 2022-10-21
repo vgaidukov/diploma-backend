@@ -1,9 +1,11 @@
+const { FORBIDDEN_ERR } = require('../errorTextMessages');
+
 class ForbiddenError extends Error {
-  constructor(message) {
-    super(message);
+  constructor() {
+    super();
     this.name = 'ForbiddenError';
     this.statusCode = 403;
-    this.message = 'Ошибка доступа, требуется авторизация';
+    this.message = FORBIDDEN_ERR;
   }
 }
 

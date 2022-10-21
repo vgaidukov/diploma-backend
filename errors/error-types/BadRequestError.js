@@ -1,9 +1,11 @@
+const { BAD_REQUEST_ERR } = require('../errorTextMessages');
+
 class BadRequestError extends Error {
-  constructor(message) {
-    super(message);
+  constructor() {
+    super();
     this.name = 'ValidationError';
     this.statusCode = 400;
-    this.message = 'Ошибка валидации, переданы некорректные данные';
+    this.message = BAD_REQUEST_ERR;
   }
 }
 

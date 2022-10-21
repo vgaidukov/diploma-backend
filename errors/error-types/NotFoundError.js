@@ -1,9 +1,11 @@
+const { NOT_FOUND_ERR } = require('../errorTextMessages');
+
 class NotFoundError extends Error {
-  constructor(message) {
-    super(message);
+  constructor() {
+    super();
     this.name = 'CastError';
     this.statusCode = 404;
-    this.message = 'Фильм или пользователь не найден, или был запрошен несуществующий роут';
+    this.message = NOT_FOUND_ERR;
   }
 }
 

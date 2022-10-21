@@ -1,9 +1,11 @@
+const { CONFLICT_ERR } = require('../errorTextMessages');
+
 class ConflictError extends Error {
-  constructor(message) {
-    super(message);
+  constructor() {
+    super();
     this.name = 'ConflictError';
     this.statusCode = 409;
-    this.message = 'Ошибка, пользователь уже существует';
+    this.message = CONFLICT_ERR;
   }
 }
 
