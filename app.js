@@ -18,12 +18,11 @@ const app = express();
 
 mongoose.connect(NODE_ENV === 'production' ? DB_LINK : DB_DEV_LINK);
 
+app.use(corsHandler);
+app.use(requestLogger);
 app.use(limiter);
 app.use(helmet());
-app.use(corsHandler);
 app.use(bodyParser.json());
-
-app.use(requestLogger);
 
 app.use(routes);
 
