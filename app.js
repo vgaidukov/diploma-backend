@@ -8,14 +8,14 @@ const limiter = require('./middlewares/limiter');
 const corsHandler = require('./middlewares/corsHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { errorHandler } = require('./errors/errorHandler');
-const { DB_LINK } = require('./config');
+const { DB_DEV_LINK } = require('./config');
 
 const routes = require('./routes/index');
 
-const { PORT = 3000 } = process.env;
+const { NODE_ENV, DB_LINK, PORT = 3000 } = process.env;
 const app = express();
 
-mongoose.connect(DB_LINK);
+mongoose.connect(NODE_ENV === 'production' ? DB_LINK : DB_DEV_LINK);
 
 app.use(limiter);
 app.use(helmet());
