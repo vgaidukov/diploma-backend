@@ -1,6 +1,13 @@
 const { celebrate, Joi } = require('celebrate');
 Joi.objectId = require('joi-objectid')(Joi);
-const { urlPattern } = require('../utils/constants');
+const validator = require('validator');
+
+const validateURL = (value, helpers) => {
+  if (validator.isURL(value)) {
+    return value;
+  }
+  return helpers.message(`"${helpers.state.path}" is not valid URL`);
+};
 
 const validateRegistration = celebrate({
   body: Joi.object().keys({
@@ -31,9 +38,9 @@ const validateMovieAdd = celebrate({
     duration: Joi.number().required(),
     year: Joi.string().required(),
     description: Joi.string().required(),
-    image: Joi.string().required().regex(urlPattern),
-    trailerLink: Joi.string().required().regex(urlPattern),
-    thumbnail: Joi.string().required().regex(urlPattern),
+    image: Joi.string().required().custom(validateURL),
+    trailerLink: Joi.string().required().custom(validateURL),
+    thumbnail: Joi.string().required().custom(validateURL),
     movieId: Joi.number().required(),
     nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),
