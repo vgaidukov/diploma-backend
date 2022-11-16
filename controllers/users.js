@@ -11,6 +11,15 @@ const { setErrorType } = require('../errors/setErrorType');
 
 const NotFoundError = require('../errors/error-types/NotFoundError');
 
+const getToken = (user) => {
+  const tokenValue = jwt.sign(
+    { _id: user._id },
+    NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
+    { expiresIn: '1w' },
+  );
+  return tokenValue;
+};
+
 const createUser = (req, res, next) => {
   const {
     email,
@@ -24,7 +33,10 @@ const createUser = (req, res, next) => {
       name,
     }))
     .then((user) => {
-      res.send({ data: user.toObject() });
+      res.send({
+        data: user.toObject(),
+        token: getToken(user),
+      });
     })
     .catch((err) => {
       next(setErrorType(err));
@@ -36,13 +48,8 @@ const login = (req, res, next) => {
 
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      const tokenValue = jwt.sign(
-        { _id: user._id },
-        NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
-        { expiresIn: '1w' },
-      );
       res
-        .send({ token: tokenValue });
+        .send({ token: getToken(user) });
     })
     .catch(next);
 };
