@@ -1,7 +1,7 @@
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
-  // 'https://vgaidukov.students.nomoredomains.icu',
-  // 'http://vgaidukov.students.nomoredomains.icu',
+  'https://movies-vg.nomoredomains.icu',
+  'http://movies-vg.nomoredomains.icu',
   'http://localhost:3000',
 ];
 
