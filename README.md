@@ -1,7 +1,7 @@
 # Movies Explorer API
 - Backend: https://api.movies-vg.nomoredomains.icu  
 - Frontend: https://movies-vg.nomoredomains.icu  
-- Репозиторий на GitHub https://github.com/vgaidukov/diploma-backend
+- Репозиторий на `GitHub` https://github.com/vgaidukov/movies-backend
 
 Бэкенд для сервиса, представляющего собой сайт с каталогом фильмов, которые можно сохранить к себе в избранное и удалить.
 Доступен фильтр по сдлительности фильмов, редактирование профиля.
@@ -40,7 +40,7 @@ ____
 
 Бэкенд задеплоен на виртуальный сервер cloud.yandex.ru . ОС - Ubuntu 20.04.  
 Настроен nginx, выпущены сертификаты для защищенного соединения, настроена бесперебойная работа приложения.
-
+____
 #### Стэк
 `Node.js` `Express.js` `mongoose` `MongoDB`  
 Для тестирования запросов использовался Postman.
